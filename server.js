@@ -1,8 +1,8 @@
 const express = require('express');
 const methodOverride = require('method-override');
-const dal = require('./src/dal');
+const dal = require('./src/pg.dal');
 const apiRouter = require('./src/api');
-const { getAllAuthors, getAllGenres } = require('./src/dal');
+const { getAllAuthors, getAllGenres } = require('./src/pg.dal');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -18,7 +18,7 @@ app.get('/', async (req, res) => {
   console.log('Fetching all books');
   try {
     const books = await dal.getAllBooks();
-    res.render('index.ejs', { books });
+    res.render('home.ejs', { books });
   } catch (error) {
     // Handle error gracefully
     console.error('Error fetching books:', error);

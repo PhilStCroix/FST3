@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const dal = require('./dal');
+const dal = require('./pg.dal');
 
 // GET all books
 router.get('/books', async (req, res) => {
